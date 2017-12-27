@@ -28,6 +28,7 @@
                 var outhours;
                 var outseconds;
                 var outminutes;
+                var timer;
                 
                 if (Math.round(numseconds) >= 10)
                 {
@@ -64,6 +65,7 @@
               
               if($("#startstop").html() == "Start"){
                   startTime = new Date();
+                  // To do: insert data in the database with this startTime.
                 $("#startstop").empty();
                 $("#startstop").append("Stop");
                 $("#startstop").removeClass("btn-success");
@@ -76,15 +78,17 @@
                   $("#startstop").append("Start");
                   $("#startstop").removeClass("btn-danger");
                   $("#startstop").addClass("btn-success");
-                  alert("Stop");
+                  $("#timeShow").empty();
+                  $("#timeShow").append("00:00:00");
+                  startTime = null;
+                  clearInterval(timer);
               }
           }
           
           function counterS(stime){
-              setInterval(function () {
+              timer = setInterval(function () {
                 $("#timeShow").empty();
-                $("#timeShow").append(millisToMins(new Date() - stime);
-                outputDiv.innerHTML = "ms since the start: " + ();
+                $("#timeShow").append(millisToMins(Math.floor((new Date() - stime)/1000)));
               }, 1000);
               
           }
