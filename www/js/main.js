@@ -58,8 +58,8 @@ function ze_login() {
 	var i_email = document.getElementById('email').value;
     var i_pass = document.getElementById('pass').value;
     $.ajax({
-        //url : "http://localhost:8888/Zeiterfassung/www/php/main.php",
-        url : "http://yarawixcommerce.esy.es/zeiterfassung/www/php/main.php",
+        url : "http://localhost:80/Zeiterfassung/www/php/main.php",
+        //url : "http://yarawixcommerce.esy.es/zeiterfassung/www/php/main.php",
         type : "POST",
         data : {email : i_email, pass : i_pass, fid : 'login', login : ''},
         dataType: 'json',
@@ -94,7 +94,7 @@ function qry_benproj() {
     var in_session = 1;
     //alert("Here");
     $.ajax({
-        url : "http://localhost:8888/Zeiterfassung/www/php/zeiterfassung.php",
+        url : "http://localhost:80/Zeiterfassung/www/php/zeiterfassung.php",
         //url : "http://yarawixcommerce.esy.es/zeiterfassung/www/php/main.php",
         type : "POST",
         data : { u_session : in_session, qry : 'benpro' },
@@ -142,4 +142,43 @@ function qry_benproj() {
             alert("error");
         }
     });
+}
+
+function ze_register(){
+    var i_name = document.getElementById('name').value;
+    var i_email = document.getElementById('email').value;
+    var i_pass = document.getElementById('pass').value;
+    var i_confirm_pass = document.getElementById('confirm_pass').value;
+
+    $.ajax({
+        url : "http://localhost:80/Zeiterfassung/www/php/main.php",
+        //url : "http://yarawixcommerce.esy.es/zeiterfassung/www/php/main.php",
+        type : "POST",
+        data : {name : i_name, email : i_email, pass : i_pass, confirm_pass : i_confirm_pass, fid : 'register'},
+        dataType: 'json',
+        
+        success : function(result, rtype){
+            // Correct response
+            //window.localStorage.SetItem("loggedIn", 1);
+            //window.localStorage.setItem("u_session", result.u_session);
+            if (result.success == 1) {
+                window.location.href = "index.html";   
+            }
+            else{
+                window.location.href = "register.html";
+                
+                $("#suc_err").append(result.message);
+                $("#suc_err").class("alert alert-danger");
+            }
+            
+            alert(JSON.stringify(result));
+            //console.log(result.message);
+        },
+        
+        error : function(xhr,errmsg,err) {
+            console.log(xhr.status + ": "+ + xhr.responseText);
+            alert("error");
+        }
+    });
+
 }
