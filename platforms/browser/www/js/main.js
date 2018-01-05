@@ -66,8 +66,8 @@ function ze_login() {
         
         success : function(result, rtype){
             // Correct response
-            //window.localStorage.SetItem("loggedIn", 1);
-            //window.localStorage.setItem("u_session", result.u_session);
+            window.localStorage.setItem("loggedIn", 1);
+            window.localStorage.setItem("u_session", result.u_session);
             if (result.success == 1) {
                 window.location.href = "zeiterfassung.html?u_session="+result.u_session;   
             }
@@ -90,9 +90,19 @@ function ze_login() {
     
 }
 
+function logout() {
+    //alert("Logout");
+    window.localStorage.removeItem("loggedIn");
+    window.localStorage.removeItem("u_session");
+    window.location.href = "index.html";
+    $("#suc_err").append("Successfully Logged Out!");
+    $("#suc_err").class("alert alert-success");
+
+}
+
 function qry_benproj() {
-    var in_session = 1;
-    //alert("Here");
+    var in_session = window.localStorage.getItem("u_session");
+    //alert("in_session = "+in_session);
     $.ajax({
         url : "http://localhost:8888/Zeiterfassung/www/php/zeiterfassung.php",
         //url : "http://yarawixcommerce.esy.es/zeiterfassung/www/php/main.php",
@@ -120,7 +130,7 @@ function qry_benproj() {
                                     "</tr>");
                 $(laufd).each(function(index, laufd){
                     $("#laufende").append(
-                                    "<tr>"+
+                                    "<tr style='background-color:"+laufd.color+"' onClick='alert(\""+laufd.pkprojekt+"\");'>"+
                                         "<td>"+ laufd.nummer +"</td>"+
                                         "<td>"+ laufd.titel +"</td>"+"</tr>"
                     );
