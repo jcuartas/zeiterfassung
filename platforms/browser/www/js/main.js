@@ -164,13 +164,11 @@ function ze_register(){
         url : "http://localhost:8888/Zeiterfassung/www/php/main.php",
         //url : "http://yarawixcommerce.esy.es/zeiterfassung/www/php/main.php",
         type : "POST",
-        data : {name : i_name, email : i_email, pass : i_pass, confirm_pass : i_confirm_pass, fid : 'register'},
+        data : {name : i_name, email : i_email, pass : i_pass, confirm_pass : i_confirm_pass, fid : 'register', register : ''},
         dataType: 'json',
         
         success : function(result, rtype){
             // Correct response
-            //window.localStorage.SetItem("loggedIn", 1);
-            //window.localStorage.setItem("u_session", result.u_session);
             if (result.success == 1) {
                 window.location.href = "index.html";   
             }
