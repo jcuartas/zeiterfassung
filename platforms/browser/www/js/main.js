@@ -58,7 +58,7 @@ function ze_login() {
 	var i_email = document.getElementById('email').value;
     var i_pass = document.getElementById('pass').value;
     $.ajax({
-        url : "http://localhost:80/Zeiterfassung/www/php/main.php",
+        url : "http://localhost:8888/Zeiterfassung/www/php/main.php",
         //url : "http://yarawixcommerce.esy.es/zeiterfassung/www/php/main.php",
         type : "POST",
         data : {email : i_email, pass : i_pass, fid : 'login', login : ''},
@@ -94,7 +94,7 @@ function qry_benproj() {
     var in_session = 1;
     //alert("Here");
     $.ajax({
-        url : "http://localhost:80/Zeiterfassung/www/php/zeiterfassung.php",
+        url : "http://localhost:8888/Zeiterfassung/www/php/zeiterfassung.php",
         //url : "http://yarawixcommerce.esy.es/zeiterfassung/www/php/main.php",
         type : "POST",
         data : { u_session : in_session, qry : 'benpro' },
@@ -151,7 +151,7 @@ function ze_register(){
     var i_confirm_pass = document.getElementById('confirm_pass').value;
 
     $.ajax({
-        url : "http://localhost:80/Zeiterfassung/www/php/main.php",
+        url : "http://localhost:8888/Zeiterfassung/www/php/main.php",
         //url : "http://yarawixcommerce.esy.es/zeiterfassung/www/php/main.php",
         type : "POST",
         data : {name : i_name, email : i_email, pass : i_pass, confirm_pass : i_confirm_pass, fid : 'register'},
