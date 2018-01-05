@@ -102,7 +102,7 @@ function logout() {
 
 function qry_benproj() {
     var in_session = window.localStorage.getItem("u_session");
-    //alert("in_session = "+in_session);
+    alert("in_session = "+in_session);
     $.ajax({
         //url : "http://localhost:8888/Zeiterfassung/www/php/zeiterfassung.php",
         url : "http://yarawixcommerce.esy.es/zeiterfassung/www/php/main.php",
@@ -112,7 +112,7 @@ function qry_benproj() {
         
         success : function(result, rtype){
             // Correct response
-            // alert(JSON.stringify(result));
+             alert(JSON.stringify(result));
             //window.localStorage.SetItem("loggedIn", 1);
             //window.localStorage.setItem("u_session", result.u_session);
             if (result.success == 1) {

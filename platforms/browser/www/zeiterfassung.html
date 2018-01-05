@@ -150,81 +150,53 @@
       </div>
       <div class="row">
         <div class="col-sm-12" style="text-align: center">          
-            
-            
-        <!-- Carousel -->
-            <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
-              <ol class="carousel-indicators">
-                <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
-                <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
-                <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
-              </ol>
-              <div class="carousel-inner" role="listbox">
-                <div class="carousel-item active">
+        
+            <div id="accordion" role="tablist" aria-multiselectable="true">
+                <div class="card">
+                  <div class="card-header" role="tab" id="headingOne">
+                    <h5 class="mb-0">
+                      <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
                         <h3>Laufende Projekte</h3>
-                        <div class="container">
-                            <div class="row">
-                                <div class="col-sm-1"></div>
-                                <div id="laufendeprojekte" class="col-sm-10">
-                                </div>
-                                <div class="col-sm-1"></div>
-                            </div>
-                        </div>
+                      </a>
+                    </h5>
+                  </div>
+              
+                  <div id="collapseOne" class="collapse" role="tabpanel" aria-labelledby="headingOne">
+                    <div class="card-block">
+                        <div id="laufendeprojekte">
+                        </div>    
+                    </div>
+                  </div>
                 </div>
-                <div class="carousel-item">
-                        <h3>Pause</h3>
-                          <div class="container">
-                            <table id="pause" class="table table-hover">
-                              <tr>
-                                  <th>Projekt No.</th>
-                                  <th>StartZeit</th>
-                                  <th>Endzeit</th>
-                                  <th>Bemerkung</th>
-                                  <th>Abrechnen</th>
-                                  <th>Nummer</th>
-                                  <th>Titel</th>
-                                </tr>
-                                <tr>
-                                    <td>1</td>
-                                    <td>21-11-2017 09:00:00</td>
-                                    <td>21-11-2017 09:45:00</td>
-                                    <td>Pause
-                                    </td>
-                                    <td>True
-                                    </td>
-                                    <td>1292l-5543
-                                    </td>
-                                    <td>Titel
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>1</td>
-                                    <td>22-11-2017 09:00:00</td>
-                                    <td></td>
-                                    <td>Pause
-                                    </td>
-                                    <td>True
-                                    </td>
-                                    <td>1292l-5543
-                                    </td>
-                                    <td>Titel
-                                    </td>
-                                </tr>
-                            </table>
-                        </div>
+                <div class="card">
+                  <div class="card-header" role="tab" id="headingTwo">
+                    <h5 class="mb-0">
+                      <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                        Collapsible Group Item #2
+                      </a>
+                    </h5>
+                  </div>
+                  <div id="collapseTwo" class="collapse" role="tabpanel" aria-labelledby="headingTwo">
+                    <div class="card-block">
+                      Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+                    </div>
+                  </div>
                 </div>
-              </div>
-              <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
-                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                <span class="sr-only">Previous</span>
-              </a>
-              <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
-                <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                <span class="sr-only">Next</span>
-              </a>
+                <div class="card">
+                  <div class="card-header" role="tab" id="headingThree">
+                    <h5 class="mb-0">
+                      <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                        Collapsible Group Item #3
+                      </a>
+                    </h5>
+                  </div>
+                  <div id="collapseThree" class="collapse" role="tabpanel" aria-labelledby="headingThree">
+                    <div class="card-block">
+                      Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+                    </div>
+                  </div>
+                </div>
             </div>
-            
-            
         </div>
       </div>
   </div>
