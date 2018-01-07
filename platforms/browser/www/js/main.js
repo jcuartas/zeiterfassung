@@ -190,3 +190,75 @@ function ze_register(){
     });
 
 }
+
+$(document).ready(function(){
+    $('#accordion').on('shown.bs.collapse', function (e) {
+        //alert('Event fired on #' + e.target.id);
+        if (e.target.id == "collapseOne"){
+            qry_benproj();
+        }
+        else if(e.target.id == "collapseTwo") {
+            alert("2");
+        }
+        else if(e.target.id == "collapseThree") {
+            alert("3");
+        }
+        else if (e.target.id == "collapseFour") {
+            alert("4");
+        }
+    });
+});
+
+function qry_allebenproj() {
+    var in_session = window.localStorage.getItem("u_session");
+    //alert("in_session = "+in_session);
+    $.ajax({
+        url : "http://localhost:8888/Zeiterfassung/www/php/zeiterfassung.php",
+        //url : "http://yarawixcommerce.esy.es/zeiterfassung/www/php/zeiterfassung.php",
+        type : "POST",
+        data : { u_session : in_session, qry : 'allebenpro' },
+        dataType : 'json',
+        
+        success : function(result, rtype){
+            // Correct response
+            // alert(JSON.stringify(result));
+            //window.localStorage.SetItem("loggedIn", 1);
+            //window.localStorage.setItem("u_session", result.u_session);
+            if (result.success == 1) {
+                //console.log(JSON.stringify(result));
+                var laufd = result.lauf;
+                //console.log(JSON.stringify(laufd));
+                
+                $("#laufendeprojekte").empty();
+                
+                $("#laufendeprojekte").append(
+                "<table id='laufende' class='table table-hover'>"+
+                                  "<tr>"+
+                                      "<th style='text-align: center'>Nummer</th>"+
+                                      "<th style='text-align: center'>Titel</th>"+
+                                    "</tr>");
+                $(laufd).each(function(index, laufd){
+                    $("#laufende").append(
+                                    "<tr style='background-color:"+laufd.color+"' onClick='alert(\""+laufd.pkprojekt+"\");'>"+
+                                        "<td>"+ laufd.nummer +"</td>"+
+                                        "<td>"+ laufd.titel +"</td>"+"</tr>"
+                    );
+                });
+                
+                $("#laufendeprojekte").append("</table>");
+                
+            }
+            else{
+                alert("error");
+            }
+            
+            //alert(JSON.stringify(result));
+            //console.log(result.message);
+        },
+        
+        error : function(xhr,errmsg,err) {
+            console.log(xhr.status + ": "+ + xhr.responseText);
+            alert("error");
+        }
+    });
+}
