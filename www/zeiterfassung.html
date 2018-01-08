@@ -92,6 +92,14 @@
               }, 1000);
               
           }
+
+          function currentProject(pk, name) {
+            window.localStorage.setItem("projpk", pk);
+            window.localStorage.setItem("projname", name);
+            $("#currProj").empty();
+            $("#currProj").append("<strong>"+name+"</strong>");
+          }
+
       </script>
       <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->      <script type="text/javascript" src="https://code.jquery.com/jquery-3.1.0.min.js"></script>
 
@@ -135,8 +143,8 @@
       </div>
       <div class="row">
         <div class="col-sm-12" style="text-align: center">
-            <div class="alert alert-success" role="alert">
-                <strong>Phonegap</strong>
+            <div id="currProj" class="alert alert-success" role="alert">
+                <strong >Phonegap</strong>
             </div>  
         </div>
       </div>

@@ -117,9 +117,9 @@ function qry_benproj() {
             //window.localStorage.setItem("u_session", result.u_session);
             if (result.success == 1) {
                 //console.log(JSON.stringify(result));
-                alert(JSON.stringify(result));
+                //alert(JSON.stringify(result));
                 var allepd = result.allep;
-                console.log(JSON.stringify(allepd));
+                //console.log(JSON.stringify(allepd));
                 //alert(JSON.stringify(allepd));
                 
                 $("#alleprojekte").empty();
@@ -244,7 +244,7 @@ function qry_benlaufproj() {
                                     "</tr>");
                 $(laufpd).each(function(index, laufpd){
                     $("#laufende").append(
-                                    "<tr onClick='alert(\""+laufpd.pkprojekt+"\");'>"+
+                                    "<tr onClick='currentProject("+laufpd.pkprojekt+", '"+laufpd.titel+"');'>"+
                                         "<td>"+ laufpd.nummer +"</td>"+
                                         "<td>"+ laufpd.titel +"</td>"+
                                         "<td>"+ laufpd.startzeit +"</td>"+"</tr>"
@@ -271,7 +271,7 @@ function qry_benlaufproj() {
 
 function qry_pause() {
     var in_session = window.localStorage.getItem("u_session");
-    alert("in_session = "+in_session);
+    //alert("in_session = "+in_session);
     $.ajax({
         //url : "http://localhost:8888/Zeiterfassung/www/php/zeiterfassung.php",
         url : "http://yarawixcommerce.esy.es/zeiterfassung/www/php/zeiterfassung.php",
@@ -281,7 +281,7 @@ function qry_pause() {
         
         success : function(result, rtype){
             // Correct response
-             alert(JSON.stringify(result));
+            // alert(JSON.stringify(result));
             //window.localStorage.SetItem("loggedIn", 1);
             //window.localStorage.setItem("u_session", result.u_session);
             if (result.success == 1) {
@@ -300,7 +300,7 @@ function qry_pause() {
                                     "</tr>");
                 $(pause).each(function(index, pause){
                     $("#tblpause").append(
-                                    "<tr onClick='alert(\""+pause.pk+"\");'>"+
+                                    "<tr>"+
                                         "<td>"+ pause.startzeit +"</td>"+
                                         "<td>"+ pause.endzeit +"</td>"+
                                         "<td>"+ pause.status +"</td>"+"</tr>"
@@ -323,4 +323,11 @@ function qry_pause() {
             alert("error");
         }
     });
+}
+
+function currentProject(pk, name) {
+    window.localStorage.setItem("projpk", pk);
+    window.localStorage.setItem("projname", name);
+    $("#currProj").empty();
+    $("#currProj").append("<strong>"+name+"</strong>");
 }
