@@ -163,8 +163,8 @@ function ze_register(){
     var i_confirm_pass = document.getElementById('confirm_pass').value;
 
     $.ajax({
-        //url : "http://localhost:8888/Zeiterfassung/www/php/main.php",
-        url : "http://yarawixcommerce.esy.es/zeiterfassung/www/php/main.php",
+        url : "http://localhost:8888/Zeiterfassung/www/php/main.php",
+        //url : "http://yarawixcommerce.esy.es/zeiterfassung/www/php/main.php",
         type : "POST",
         data : {name : i_name, email : i_email, pass : i_pass, confirm_pass : i_confirm_pass, fid : 'register', register : ''},
         dataType: 'json',
@@ -333,3 +333,40 @@ function ze_bodyload(){
         currentProject(pk);
     }
 }
+
+function currentProject(pk) {
+    //window.localStorage.setItem("projpk", pk);
+    //window.localStorage.setItem("projname", name);
+
+    $.ajax({
+        //url : "http://localhost:8888/Zeiterfassung/www/php/zeiterfassung.php",
+        url : "http://yarawixcommerce.esy.es/zeiterfassung/www/php/zeiterfassung.php",
+        type : "POST",
+        data : { qry : 'projekt', pk_proj : pk },
+        dataType : 'json',
+        
+        success : function(result, rtype){
+            // Correct response
+            // alert(JSON.stringify(result));
+            //window.localStorage.SetItem("loggedIn", 1);
+            //window.localStorage.setItem("u_session", result.u_session);
+            if (result.success == 1) {
+                $("#currProj").empty();
+                $("#currProj").append("<strong>"+result.projekt+"</strong>");
+                //console.log(JSON.stringify(result));
+            }
+            else{
+                alert("error");
+            }
+            
+            //alert(JSON.stringify(result));
+            //console.log(result.message);
+        },
+        
+        error : function(xhr,errmsg,err) {
+            console.log(xhr.status + ": "+ + xhr.responseText);
+            alert("error");
+        }
+    });    
+  }
+
