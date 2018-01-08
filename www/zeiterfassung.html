@@ -93,11 +93,11 @@
               
           }
 
-          function currentProject(pk, name) {
+          function currentProject(pk) {
             window.localStorage.setItem("projpk", pk);
-            window.localStorage.setItem("projname", name);
+            //window.localStorage.setItem("projname", name);
             $("#currProj").empty();
-            $("#currProj").append("<strong>"+name+"</strong>");
+            $("#currProj").append("<strong>"+pk+"</strong>");
           }
 
       </script>
@@ -107,7 +107,7 @@
 	<script type="text/javascript" src="js/index.js"></script>
       <script type="text/javascript" src="js/main.js"></script>
   </head>
-  <body onload="">
+  <body onload="ze_bodyload();">
     <nav class="navbar navbar-inverse navbar-fixed-top">
       <div class="container">
         <div class="navbar-header">

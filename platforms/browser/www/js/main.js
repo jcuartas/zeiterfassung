@@ -132,7 +132,7 @@ function qry_benproj() {
                                     "</tr>");
                 $(allepd).each(function(index, allepd){
                     $("#alleproj").append(
-                                    "<tr style='background-color:"+allepd.color+"' onClick='alert(\""+allepd.pkprojekt+"\");'>"+
+                                    "<tr style='background-color:"+allepd.color+"' onClick='currentProject("+allepd.pkprojekt+");'>"+
                                         "<td>"+ allepd.nummer +"</td>"+
                                         "<td>"+ allepd.titel +"</td>"+"</tr>"
                     );
@@ -243,8 +243,10 @@ function qry_benlaufproj() {
                                       "<th style='text-align: center'>Start Zeit</th>"+
                                     "</tr>");
                 $(laufpd).each(function(index, laufpd){
-                    $("#laufende").append(
-                                    "<tr onClick='currentProject("+laufpd.pkprojekt+", '"+laufpd.titel+"');'>"+
+                     
+                    
+                     $("#laufende").append(
+                                        "<tr onClick='currentProject("+laufpd.pkprojekt+");'>"+
                                         "<td>"+ laufpd.nummer +"</td>"+
                                         "<td>"+ laufpd.titel +"</td>"+
                                         "<td>"+ laufpd.startzeit +"</td>"+"</tr>"
@@ -325,9 +327,9 @@ function qry_pause() {
     });
 }
 
-function currentProject(pk, name) {
-    window.localStorage.setItem("projpk", pk);
-    window.localStorage.setItem("projname", name);
-    $("#currProj").empty();
-    $("#currProj").append("<strong>"+name+"</strong>");
+function ze_bodyload(){
+    if (window.localStorage.getItem("projpk") == 1) {
+        var pk = window.localStorage.getItem("projpk");
+        currentProject(pk);
+    }
 }
